@@ -1,0 +1,24 @@
+import { RESPONSIVE_SIZES } from "../../constants/responsiveSizes";
+import { FlickrPhoto } from "../../types/flickrTypes";
+import { getImageUrls } from "../../utils/getImageUrls";
+import styles from "./ResponsiveImage.module.scss";
+
+interface ResponsiveImageProps {
+  photo: FlickrPhoto;
+}
+
+const ResponsiveImage: React.FC<ResponsiveImageProps> = ({ photo }) => {
+  const urls = getImageUrls(photo);
+
+  return (
+    <img
+      src={urls.medium}
+      srcSet={`${urls.small} 480w, ${urls.medium} 800w, ${urls.large} 1200w`}
+      sizes={RESPONSIVE_SIZES}
+      alt={photo.title || "Unknown"}
+      className={styles.image}
+    />
+  );
+};
+
+export default ResponsiveImage;
