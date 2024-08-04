@@ -6,7 +6,7 @@ interface UseFetchDataReturn<T> {
   error: string | null;
 }
 
-interface UseFetchDataProps {
+interface UseFetchDataParams {
   url: string;
   params?: Record<string, string>;
 }
@@ -14,7 +14,7 @@ interface UseFetchDataProps {
 const useFetchData = <T,>({
   url,
   params,
-}: UseFetchDataProps): UseFetchDataReturn<T> => {
+}: UseFetchDataParams): UseFetchDataReturn<T> => {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
