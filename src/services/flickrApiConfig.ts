@@ -7,3 +7,13 @@ export const getFlickrPhotosParams = (
   format: "json",
   nojsoncallback: "1",
 });
+
+export const getPhotoDetailsParams = (
+  photoId: string
+): Record<string, string> => ({
+  method: "flickr.photos.getInfo",
+  api_key: process.env.REACT_APP_API_KEY ?? "",
+  photo_id: photoId,
+  format: "json",
+  nojsoncallback: "1",
+});
