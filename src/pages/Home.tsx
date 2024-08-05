@@ -1,5 +1,7 @@
+import Main from "../components/Main/Main";
+
 const Home: React.FC = () => {
-  return <main>Home</main>;
+  return <Main>Home</Main>;
 };
 
 export default Home;
