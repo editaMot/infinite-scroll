@@ -35,8 +35,6 @@ const ImagesList: React.FC = () => {
   if (isLoading || isDetailsLoading) return <p>Loading...</p>;
   if (error || detailsError) return <p>Error: {error || detailsError}</p>;
 
-  console.log(combinedPhotos[0]);
-
   return (
     <div className={styles.list}>
       {combinedPhotos.map((photo) => (
