@@ -2,4 +2,6 @@
   position: relative;
   width: 100%;
   cursor: pointer;
+  border-radius: var(--border-sm);
+  overflow: hidden;
 }
