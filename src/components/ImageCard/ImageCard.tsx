@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useFavouriteImage } from "../../hooks/useFavouriteImage";
 import { Photo } from "../../types/imageTypes";
 import ImageDetails from "../ImageDetails/ImageDetails";
 import ResponsiveImage from "../ResponsiveImage/ResponsiveImage";
@@ -9,6 +10,7 @@ interface ImageCardProps {
 }
 
 const ImageCard: React.FC<ImageCardProps> = ({ photo }) => {
+  const { handleFavouriteClick, addedToFavourite } = useFavouriteImage(photo);
   const [showDetails, setShowDetails] = useState<boolean>(false);
 
   const handleShowDetails = (): void => setShowDetails(true);
@@ -21,7 +23,13 @@ const ImageCard: React.FC<ImageCardProps> = ({ photo }) => {
       onMouseMove={handleShowDetails}
       onMouseLeave={handleHideDetails}
     >
-      {showDetails && <ImageDetails photo={photo} />}
+      {showDetails && (
+        <ImageDetails
+          photo={photo}
+          onFavouriteClick={handleFavouriteClick}
+          isInFavourite={addedToFavourite}
+        />
+      )}
       <ResponsiveImage photo={photo} />
     </div>
   );
