@@ -1,10 +1,10 @@
 import React from "react";
-import { FlickrPhoto } from "../types/flickrTypes";
+import { Photo } from "../types/imageTypes";
 
 export interface FavouriteImagesContext {
-  favouriteImagesList: FlickrPhoto[];
-  updateFavouritesList: (photo: FlickrPhoto) => void;
-  removeFromFavouritesList: (photo: FlickrPhoto) => void;
+  favouriteImagesList: Photo[];
+  updateFavouritesList: (photo: Photo) => void;
+  removeFromFavouritesList: (photo: Photo) => void;
 }
 
 const INITIAL_VALUES: FavouriteImagesContext = {

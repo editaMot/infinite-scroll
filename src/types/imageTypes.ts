@@ -6,10 +6,6 @@ export interface ImageUrls {
   large: string;
 }
 
-export interface PhotoDetail {
-  author: string;
-}
-
 export interface Photo extends FlickrPhoto {
   author: FlickrImageAuthor;
 }

@@ -1,4 +1,3 @@
-import { FlickrPhoto } from "../../types/flickrTypes";
 import { Photo } from "../../types/imageTypes";
 import Button from "../Button/Button";
 import styles from "./ImageDetails.module.scss";
@@ -6,7 +5,7 @@ import styles from "./ImageDetails.module.scss";
 interface ImageDetailsProps {
   photo: Photo;
   isInFavourite: boolean;
-  onFavouriteClick: (photo: FlickrPhoto) => void;
+  onFavouriteClick: (photo: Photo) => void;
 }
 
 const ImageDetails: React.FC<ImageDetailsProps> = ({

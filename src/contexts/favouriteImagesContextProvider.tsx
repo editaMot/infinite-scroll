@@ -1,5 +1,5 @@
-import { ReactNode, useEffect, useState, useCallback } from "react";
-import { FlickrPhoto } from "../types/flickrTypes";
+import { ReactNode, useCallback, useEffect, useState } from "react";
+import { Photo } from "../types/imageTypes";
 import { favouriteImagesContext } from "./favouriteImagesContext";
 
 interface Props {
@@ -13,9 +13,7 @@ enum LocalStorageKey {
 export const FavouriteImagesContextProvider: React.FC<Props> = ({
   children,
 }) => {
-  const [favouriteImagesList, setFavouriteImagesList] = useState<FlickrPhoto[]>(
-    []
-  );
+  const [favouriteImagesList, setFavouriteImagesList] = useState<Photo[]>([]);
   const [initialized, setInitialized] = useState<boolean>(false);
 
   useEffect(() => {
@@ -42,14 +40,14 @@ export const FavouriteImagesContextProvider: React.FC<Props> = ({
     }
   }, [favouriteImagesList, initialized]);
 
-  const updateFavouritesList = useCallback((photo: FlickrPhoto): void => {
+  const updateFavouritesList = useCallback((photo: Photo): void => {
     setFavouriteImagesList((prev) => {
       const newList = [...prev, photo];
       return newList;
     });
   }, []);
 
-  const removeFromFavouritesList = useCallback((photo: FlickrPhoto): void => {
+  const removeFromFavouritesList = useCallback((photo: Photo): void => {
     setFavouriteImagesList((prev) => {
       const newList = prev.filter((favPhoto) => favPhoto.id !== photo.id);
       return newList;
@@ -68,38 +66,3 @@ export const FavouriteImagesContextProvider: React.FC<Props> = ({
     </favouriteImagesContext.Provider>
   );
 };
-
-// useEffect(() => {
-//   const savedFavourites = localStorage.getItem(
-//     LocalStorageKey.favouriteImages
-//   );
-//   if (savedFavourites?.length) {
-//     setFavouriteImagesList(JSON.parse(savedFavourites));
-//   }
-// }, []);
-
-// useEffect(() => {
-//   if (favouriteImagesList.length) {
-//     localStorage.setItem(
-//       LocalStorageKey.favouriteImages,
-//       JSON.stringify(favouriteImagesList)
-//     );
-//   }
-// }, [favouriteImagesList, favouriteImagesList.length]);
-
-// const updateFavouritesList = (photo: FlickrPhoto): void => {
-//   setFavouriteImagesList((gallery) => [...gallery, photo]);
-
-//   localStorage.setItem(
-//     LocalStorageKey.favouriteImages,
-//     JSON.stringify(favouriteImagesList)
-//   );
-// };
-
-// const removeFromFavouritesList = (photo: FlickrPhoto): void => {
-//   const filteredOut: FlickrPhoto[] = favouriteImagesList.filter(
-//     ({ id }) => id !== photo.id
-//   );
-
-//   setFavouriteImagesList(filteredOut);
-// };
