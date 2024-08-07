@@ -42,8 +42,14 @@ const useFetchData = ({
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
-      const data = await response.json();
-      setData(data);
+      const newData = await response.json();
+      setData((prevData) => ({
+        ...newData,
+        photos: {
+          ...newData.photos,
+          photo: [...(prevData?.photos.photo || []), ...newData.photos.photo],
+        },
+      }));
     } catch (error) {
       setError(
         error instanceof Error ? error.message : "An unknown error occurred"

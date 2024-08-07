@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   FlickrApiMethods,
   FlickrImageAuthor,
@@ -13,6 +13,7 @@ interface UsePhotosReturn {
   photos: Photo[];
   isLoading: boolean;
   error: string | null;
+  loadMore: () => void;
 }
 
 const usePhotos = (): UsePhotosReturn => {
@@ -20,11 +21,14 @@ const usePhotos = (): UsePhotosReturn => {
   const [isDetailsLoading, setIsDetailsLoading] = useState<boolean>(true);
   const [detailsError, setDetailsError] = useState<string | null>(null);
 
+  const [page, setPage] = useState<number>(1);
+  const [hasMore, setHasMore] = useState<boolean>(true);
+
   const { isLoading, data, error } = useFetchData({
     method: FlickrApiMethods.SearchImages,
     tag: FlickrImagesTags.Forrest,
+    page,
   });
-
   const photoList = useMemo(() => data?.photos?.photo || [], [data]);
   const photoIds = useMemo(
     () => photoList.map((photo) => photo.id),
@@ -50,6 +54,24 @@ const usePhotos = (): UsePhotosReturn => {
     fetchDetails();
   }, [photoIds]);
 
+  useEffect(() => {
+    if (
+      data &&
+      data.photos &&
+      data.photos.photo.length < Number(data.photos.total)
+    ) {
+      setHasMore(true);
+    } else {
+      setHasMore(false);
+    }
+  }, [data]);
+
+  const loadMore = useCallback(() => {
+    if (hasMore && !isLoading) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  }, [hasMore, isLoading]);
+
   const photos = useMemo(
     () => constructPhotoObject(photoList, details),
     [photoList, details]
@@ -59,6 +81,7 @@ const usePhotos = (): UsePhotosReturn => {
     photos,
     isLoading: isLoading || isDetailsLoading,
     error: error || detailsError,
+    loadMore,
   };
 };
 
