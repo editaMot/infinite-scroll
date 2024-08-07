@@ -1,4 +1,4 @@
-import { FlickrPhoto } from "./flickrTypes";
+import { FlickrImageAuthor, FlickrPhoto } from "./flickrTypes";
 
 export interface ImageUrls {
   small: string;
@@ -10,4 +10,6 @@ export interface PhotoDetail {
   author: string;
 }
 
-export interface Photo extends FlickrPhoto, PhotoDetail {}
+export interface Photo extends FlickrPhoto {
+  author: FlickrImageAuthor;
+}

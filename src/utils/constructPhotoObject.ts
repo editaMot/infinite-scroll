@@ -1,12 +1,22 @@
-import { FlickrPhoto } from "../types/flickrTypes";
+import { FlickrImageAuthor, FlickrPhoto } from "../types/flickrTypes";
 import { Photo } from "../types/imageTypes";
+
+const defaultAuthor: FlickrImageAuthor = {
+  id: "",
+  username: "Unknown",
+  realname: "Unknown",
+};
 
 export const constructPhotoObject = (
   photoList: FlickrPhoto[],
-  details: Record<string, { author: string | undefined } | null>
+  details: FlickrImageAuthor[]
 ): Photo[] => {
+  const detailsMap = new Map(details.map((detail) => [detail.id, detail]));
+
   return photoList.map((photo) => ({
     ...photo,
-    author: details[photo.id]?.author || "Unknown Author",
+    author: photo.owner
+      ? detailsMap.get(photo.owner) || defaultAuthor
+      : defaultAuthor,
   }));
 };
