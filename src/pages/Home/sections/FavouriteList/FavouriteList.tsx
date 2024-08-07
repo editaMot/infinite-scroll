@@ -3,7 +3,7 @@ import ImageCard from "../../../../components/ImageCard/ImageCard";
 import { favouriteImagesContext } from "../../../../contexts/favouriteImagesContext";
 import styles from "./FavouriteList.module.scss";
 
-const FavouriteList = () => {
+const FavouriteList: React.FC = () => {
   const { favouriteImagesList } = useContext(favouriteImagesContext);
 
   return (
