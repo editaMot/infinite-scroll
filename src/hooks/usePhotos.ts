@@ -3,6 +3,7 @@ import {
   FlickrApiMethods,
   FlickrImageAuthor,
   FlickrImagesTags,
+  FlickrPhoto,
 } from "../types/flickrTypes";
 import { Photo } from "../types/imageTypes";
 import { constructPhotoObject } from "../utils/constructPhotoObject";
@@ -16,20 +17,33 @@ interface UsePhotosReturn {
   loadMore: () => void;
 }
 
-const usePhotos = (): UsePhotosReturn => {
+const usePhotos = (activeFilter: FlickrImagesTags): UsePhotosReturn => {
   const [details, setDetails] = useState<FlickrImageAuthor[]>([]);
   const [isDetailsLoading, setIsDetailsLoading] = useState<boolean>(true);
   const [detailsError, setDetailsError] = useState<string | null>(null);
 
   const [page, setPage] = useState<number>(1);
   const [hasMore, setHasMore] = useState<boolean>(true);
+  const [photos, setPhotos] = useState<FlickrPhoto[]>([]);
 
   const { isLoading, data, error } = useFetchData({
     method: FlickrApiMethods.SearchImages,
-    tag: FlickrImagesTags.Forrest,
+    tag: activeFilter,
     page,
   });
-  const photoList = useMemo(() => data?.photos?.photo || [], [data]);
+
+  useEffect(() => {
+    setPage(1);
+    setPhotos([]);
+  }, [activeFilter]);
+
+  useEffect(() => {
+    if (data) {
+      setPhotos((prevPhotos) => [...prevPhotos, ...data.photos.photo]);
+    }
+  }, [data]);
+
+  const photoList = useMemo(() => photos, [photos]);
   const photoIds = useMemo(
     () => photoList.map((photo) => photo.id),
     [photoList]
@@ -72,13 +86,13 @@ const usePhotos = (): UsePhotosReturn => {
     }
   }, [hasMore, isLoading]);
 
-  const photos = useMemo(
+  const finalPhotos = useMemo(
     () => constructPhotoObject(photoList, details),
     [photoList, details]
   );
 
   return {
-    photos,
+    photos: finalPhotos,
     isLoading: isLoading || isDetailsLoading,
     error: error || detailsError,
     loadMore,
