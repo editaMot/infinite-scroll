@@ -1,37 +1,47 @@
 import { useCallback, useEffect, useState } from "react";
+import { ENDPOINT_URL } from "../constants/constants";
+import {
+  FetchFlickrDataParams,
+  FlickrApiResponse,
+  FlickrImagesTags,
+  ItemsPerPage,
+} from "../types/flickrTypes";
 
-interface UseFetchDataReturn<T> {
-  data: T | null;
+interface UseFetchDataReturn {
+  data: FlickrApiResponse | null;
   isLoading: boolean;
   error: string | null;
 }
 
-interface UseFetchDataParams {
-  url: string;
-  params?: Record<string, string>;
-}
-
-const useFetchData = <T,>({
-  url,
-  params,
-}: UseFetchDataParams): UseFetchDataReturn<T> => {
-  const [data, setData] = useState<T | null>(null);
+const useFetchData = ({
+  method,
+  page,
+  tag,
+  itemsPerPage,
+}: FetchFlickrDataParams): UseFetchDataReturn => {
+  const [data, setData] = useState<FlickrApiResponse | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = useCallback(async () => {
+    const URL_PARAMS = new URLSearchParams({
+      method,
+      api_key: process.env.REACT_APP_API_KEY ?? "",
+      format: "json",
+      nojsoncallback: "1",
+      per_page: itemsPerPage
+        ? String(itemsPerPage)
+        : String(ItemsPerPage.default),
+      page: page ? String(page) : "1",
+      tags: tag || FlickrImagesTags.Mountain,
+    });
     setIsLoading(true);
     setError(null);
     try {
-      const paramString = params ? new URLSearchParams(params).toString() : "";
-      const endpoint = paramString ? `${url}?${paramString}` : url;
-
-      const response = await fetch(endpoint);
-
+      const response = await fetch(`${ENDPOINT_URL}?${URL_PARAMS}`);
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
-
       const data = await response.json();
       setData(data);
     } catch (error) {
@@ -42,7 +52,7 @@ const useFetchData = <T,>({
     } finally {
       setIsLoading(false);
     }
-  }, [url, params]);
+  }, [itemsPerPage, page, tag, method]);
 
   useEffect(() => {
     fetchData();
