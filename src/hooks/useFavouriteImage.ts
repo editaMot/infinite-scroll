@@ -1,15 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { favouriteImagesContext } from "../contexts/favouriteImagesContext";
-import { FlickrPhoto } from "../types/flickrTypes";
+import { Photo } from "../types/imageTypes";
 
 interface UseFavouriteImageResponse {
   addedToFavourite: boolean;
   handleFavouriteClick: () => void;
 }
 
-export const useFavouriteImage = (
-  photo: FlickrPhoto
-): UseFavouriteImageResponse => {
+export const useFavouriteImage = (photo: Photo): UseFavouriteImageResponse => {
   const {
     favouriteImagesList,
     removeFromFavouritesList,
