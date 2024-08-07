@@ -2,11 +2,15 @@ import { useCallback } from "react";
 import ImageCard from "../../../../components/ImageCard/ImageCard";
 import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
 import usePhotos from "../../../../hooks/usePhotos";
+import { FlickrImagesTags } from "../../../../types/flickrTypes";
 import styles from "./ImagesList.module.scss";
 
-const ImagesList: React.FC = () => {
-  const { photos, isLoading, error, loadMore } = usePhotos();
-  console.log(photos.length);
+interface ImagesListProps {
+  activeFilter: FlickrImagesTags;
+}
+
+const ImagesList: React.FC<ImagesListProps> = ({ activeFilter }) => {
+  const { photos, isLoading, error, loadMore } = usePhotos(activeFilter);
 
   const handleIntersect = useCallback(
     (entries: IntersectionObserverEntry[]) => {
