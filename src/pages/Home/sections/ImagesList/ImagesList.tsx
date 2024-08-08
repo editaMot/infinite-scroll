@@ -4,6 +4,7 @@ import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
 import usePhotos from "../../../../hooks/usePhotos";
 import { FlickrImagesTags } from "../../../../types/flickrTypes";
 import styles from "./ImagesList.module.scss";
+import Loader from "../../../../components/Loader/Loader";
 
 interface ImagesListProps {
   activeFilter: FlickrImagesTags;
@@ -26,7 +27,13 @@ const ImagesList: React.FC<ImagesListProps> = ({ activeFilter }) => {
     []
   );
 
-  if (isLoading && photos.length === 0) return <p>Loading...</p>;
+  if (isLoading && photos.length === 0)
+    return (
+      <div className={styles["loader-container"]}>
+        <Loader />
+      </div>
+    );
+
   if (error) return <p>Error: {error}</p>;
 
   return (
@@ -34,7 +41,9 @@ const ImagesList: React.FC<ImagesListProps> = ({ activeFilter }) => {
       {photos.map((photo, index) => (
         <ImageCard photo={photo} key={photo.id + index} />
       ))}
-      <div ref={sentinelRef} style={{ height: "20px" }} />
+      <div className={styles.sentinelRef} ref={sentinelRef}>
+        {isLoading && <Loader />}
+      </div>
     </div>
   );
 };

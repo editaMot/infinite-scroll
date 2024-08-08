@@ -16,3 +16,23 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.sentinelRef {
+  justify-self: center;
+  height: 5rem;
+
+  @include respond(phone) {
+    grid-column: span 2;
+  }
+
+  @include respond(tab-port) {
+    grid-column: span 3;
+  }
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+}

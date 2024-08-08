@@ -17,7 +17,7 @@ const ImageDetails: React.FC<ImageDetailsProps> = ({
 
   return (
     <div className={styles.details}>
-      <p className={styles.details_title}>{title}</p>
+      <p className={styles.details_title}>{title || "Title Unknown"}</p>
       <span className={styles.details_divider}></span>
       <p className={styles.details_author}>{author.realname}</p>
       <Button
