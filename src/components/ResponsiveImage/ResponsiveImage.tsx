@@ -15,6 +15,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({ photo }) => {
       src={urls.medium}
       srcSet={`${urls.small} 480w, ${urls.medium} 800w, ${urls.large} 1200w`}
       sizes={RESPONSIVE_SIZES}
+      loading="lazy"
       alt={photo.title || "Unknown"}
       className={styles.image}
     />
