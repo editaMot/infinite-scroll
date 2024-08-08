@@ -3,28 +3,55 @@
 .tabs {
   display: flex;
   flex-direction: row;
-  padding: 2rem 0;
+  margin: 2rem 0;
+  border-radius: 4rem;
+  overflow: hidden;
+  position: relative;
+  background: var(--text-light);
 
   &_tab {
+    color: var(--text-dark);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     font-size: 1.5rem;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     cursor: pointer;
-    opacity: 0.6;
-    background: var(--text-light);
     width: 50%;
+    position: relative;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    z-index: 1;
+    background: var(--text-light);
+    border-radius: 4rem;
 
     @include respond(tab-port) {
       font-size: 2rem;
     }
+
+    &.active {
+      color: var(--text-light);
+      background: var(--color-primary);
+      border-radius: 4rem;
+    }
   }
 
-  &--activeTab {
-    border-bottom: var(--border-xs) solid var(--color-primary);
-    opacity: 1;
-    color: var(--color-primary);
+  &_indicator {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 40%;
+    background-color: var(--color-primary);
+    transition: transform 0.3s ease;
+    z-index: 0;
+    border-radius: 4rem;
+  }
+
+  &--all .tabs_indicator {
+    transform: translateX(0%);
+  }
+
+  &--favourites .tabs_indicator {
+    transform: translateX(50%);
   }
 }

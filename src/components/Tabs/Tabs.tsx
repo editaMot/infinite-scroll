@@ -12,7 +12,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, handleActiveTab }) => {
     <div className={styles.tabs}>
       <div
         className={`${styles.tabs_tab} ${
-          activeTab === "all" ? styles["tabs--activeTab"] : ""
+          activeTab === "all" ? styles.active : ""
         }`}
         onClick={() => handleActiveTab("all")}
       >
@@ -20,12 +20,13 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, handleActiveTab }) => {
       </div>
       <div
         className={`${styles.tabs_tab} ${
-          activeTab === "favourites" ? styles["tabs--activeTab"] : ""
+          activeTab === "favourites" ? styles.active : ""
         }`}
         onClick={() => handleActiveTab("favourites")}
       >
         Favourites Photos
       </div>
+      <div className={styles.tabs_indicator} />
     </div>
   );
 };
