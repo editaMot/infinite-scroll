@@ -1,0 +1,30 @@
+@import "../../styles/mixins";
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+
+  &_tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    opacity: 0.6;
+    background: var(--text-light);
+    width: 50%;
+
+    @include respond(tab-port) {
+      font-size: 2rem;
+    }
+  }
+
+  &--activeTab {
+    border-bottom: var(--border-xs) solid var(--color-primary);
+    opacity: 1;
+    color: var(--color-primary);
+  }
+}
