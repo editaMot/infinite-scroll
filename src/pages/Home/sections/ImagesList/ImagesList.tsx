@@ -1,10 +1,11 @@
 import { useCallback } from "react";
+import Error from "../../../../components/Error/Error";
 import ImageCard from "../../../../components/ImageCard/ImageCard";
+import Loader from "../../../../components/Loader/Loader";
 import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
 import usePhotos from "../../../../hooks/usePhotos";
 import { FlickrImagesTags } from "../../../../types/flickrTypes";
 import styles from "./ImagesList.module.scss";
-import Loader from "../../../../components/Loader/Loader";
 
 interface ImagesListProps {
   activeFilter: FlickrImagesTags;
@@ -12,6 +13,7 @@ interface ImagesListProps {
 
 const ImagesList: React.FC<ImagesListProps> = ({ activeFilter }) => {
   const { photos, isLoading, error, loadMore } = usePhotos(activeFilter);
+  console.log(error);
 
   const handleIntersect = useCallback(
     (entries: IntersectionObserverEntry[]) => {
@@ -34,7 +36,7 @@ const ImagesList: React.FC<ImagesListProps> = ({ activeFilter }) => {
       </div>
     );
 
-  if (error) return <p>Error: {error}</p>;
+  if (error) return <Error errorMessage={error} />;
 
   return (
     <div className={styles.list}>
