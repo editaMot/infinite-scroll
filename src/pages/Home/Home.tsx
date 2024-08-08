@@ -5,6 +5,7 @@ import { FlickrImagesTags } from "../../types/flickrTypes";
 import FavouriteList from "./sections/FavouriteList/FavouriteList";
 import ImagesFilter from "./sections/ImagesFilter/ImagesFilter";
 import ImagesList from "./sections/ImagesList/ImagesList";
+import Logo from "../../components/Logo/Logo";
 
 const Home: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabsType>("all");

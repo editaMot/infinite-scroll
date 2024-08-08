@@ -13,7 +13,6 @@ interface ImagesListProps {
 
 const ImagesList: React.FC<ImagesListProps> = ({ activeFilter }) => {
   const { photos, isLoading, error, loadMore } = usePhotos(activeFilter);
-  console.log(error);
 
   const handleIntersect = useCallback(
     (entries: IntersectionObserverEntry[]) => {
