@@ -1,6 +1,7 @@
 @import "../../styles/mixins";
 
 .tabs {
+  width: 100%;
   display: flex;
   flex-direction: row;
   margin: 2rem 0;
@@ -8,6 +9,7 @@
   overflow: hidden;
   position: relative;
   background: var(--text-light);
+  box-shadow: var(--box-shadow);
 
   &_tab {
     color: var(--text-dark);
