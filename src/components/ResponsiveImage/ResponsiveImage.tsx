@@ -1,10 +1,10 @@
 import { RESPONSIVE_SIZES } from "../../constants/responsiveSizes";
-import { FlickrPhoto } from "../../types/flickrTypes";
+import { Photo } from "../../types/imageTypes";
 import { getImageUrls } from "../../utils/getImageUrls";
 import styles from "./ResponsiveImage.module.scss";
 
 interface ResponsiveImageProps {
-  photo: FlickrPhoto;
+  photo: Photo;
 }
 
 const ResponsiveImage: React.FC<ResponsiveImageProps> = ({ photo }) => {
