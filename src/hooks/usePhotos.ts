@@ -88,7 +88,6 @@ const usePhotos = (activeFilter: FlickrImagesTags): UsePhotosReturn => {
   const loadMore = useCallback(() => {
     if (hasMore && !isLoading) {
       setPage((prevPage) => prevPage + 1);
-      console.log("Load more");
     }
   }, [hasMore, isLoading]);
 

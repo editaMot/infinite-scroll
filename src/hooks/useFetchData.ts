@@ -28,7 +28,7 @@ const useFetchData = ({
 
     const URL_PARAMS = new URLSearchParams({
       method,
-      api_key: process.env.REACT_APP_API_KEY ?? "",
+      api_key: import.meta.env.VITE_APP_API_KEY ?? "",
       format: "json",
       nojsoncallback: "1",
       per_page: itemsPerPage

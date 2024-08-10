@@ -17,7 +17,7 @@ export const fetchPhotoDetails = async (
 
     const params: Record<string, string> = {
       method: FlickrApiMethods.GetInfo,
-      api_key: process.env.REACT_APP_API_KEY ?? "",
+      api_key: import.meta.env.VITE_APP_API_KEY ?? "",
       photo_id,
       format: "json",
       nojsoncallback: "1",
@@ -26,7 +26,6 @@ export const fetchPhotoDetails = async (
     const URL_PARAMS = new URLSearchParams(params).toString();
     const response = await fetch(`${ENDPOINT_URL}?${URL_PARAMS}`);
     const data = await response.json();
-    console.log(data);
 
     const photoDetail = {
       id: data.photo.owner.nsid,
