@@ -24,6 +24,8 @@ const useFetchData = ({
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = useCallback(async () => {
+    if (!method || !page) return;
+
     const URL_PARAMS = new URLSearchParams({
       method,
       api_key: process.env.REACT_APP_API_KEY ?? "",
