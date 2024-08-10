@@ -1,0 +1,9 @@
+.logo {
+  justify-self: center;
+  width: 20rem;
+  height: auto;
+
+  @include respond(tab-port) {
+    width: 30rem;
+  }
+}
