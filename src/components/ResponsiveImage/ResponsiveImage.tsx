@@ -1,6 +1,6 @@
+import { getImageUrls } from "../../utils/getImageUrls";
 import { RESPONSIVE_SIZES } from "../../constants/responsiveSizes";
 import { Photo } from "../../types/imageTypes";
-import { getImageUrls } from "../../utils/getImageUrls";
 import styles from "./ResponsiveImage.module.scss";
 
 interface ResponsiveImageProps {
