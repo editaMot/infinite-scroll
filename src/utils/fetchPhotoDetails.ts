@@ -1,6 +1,8 @@
 import { ENDPOINT_URL } from "../constants/constants";
 import { FlickrApiMethods, FlickrImageAuthor } from "../types/flickrTypes";
 
+const detailsCache = new Map<string, FlickrImageAuthor>();
+
 export const fetchPhotoDetails = async (
   photoIds: string[]
 ): Promise<FlickrImageAuthor[]> => {
@@ -8,6 +10,10 @@ export const fetchPhotoDetails = async (
 
   const fetchPromises = photoIds.map(async (photo_id) => {
     if (!photo_id) throw new Error("photo_id is required");
+
+    if (detailsCache.has(photo_id)) {
+      return detailsCache.get(photo_id)!;
+    }
 
     const params: Record<string, string> = {
       method: FlickrApiMethods.GetInfo,
@@ -20,18 +26,17 @@ export const fetchPhotoDetails = async (
     const URL_PARAMS = new URLSearchParams(params).toString();
     const response = await fetch(`${ENDPOINT_URL}?${URL_PARAMS}`);
     const data = await response.json();
+    console.log(data);
 
-    if (!response.ok) {
-      throw new Error(
-        `API request failed for photo ID ${photo_id} with status: ${data.stat}`
-      );
-    }
-
-    return {
+    const photoDetail = {
       id: data.photo.owner.nsid,
       username: data.photo.owner.username,
       realname: data.photo.owner.realname,
     };
+
+    detailsCache.set(photo_id, photoDetail);
+
+    return photoDetail;
   });
 
   return Promise.all(fetchPromises);
