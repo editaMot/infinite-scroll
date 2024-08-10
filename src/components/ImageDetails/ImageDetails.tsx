@@ -19,7 +19,9 @@ const ImageDetails: React.FC<ImageDetailsProps> = ({
     <div className={styles.details}>
       <p className={styles.details_title}>{title || "Title Unknown"}</p>
       <span className={styles.details_divider}></span>
-      <p className={styles.details_author}>{author.realname}</p>
+      <p className={styles.details_author}>
+        {author.realname || author.username}
+      </p>
       <Button
         text={isInFavourite ? "Unfavourite" : "Favourite"}
         action={() => onFavouriteClick(photo)}
