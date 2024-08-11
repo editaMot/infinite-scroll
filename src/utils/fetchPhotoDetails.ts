@@ -1,7 +1,7 @@
 import { ENDPOINT_URL } from "../constants/constants";
 import { FlickrApiMethods, FlickrImageAuthor } from "../types/flickrTypes";
 
-const detailsCache = new Map<string, FlickrImageAuthor>();
+export const detailsCache = new Map<string, FlickrImageAuthor>();
 
 export const fetchPhotoDetails = async (
   photoIds: string[]

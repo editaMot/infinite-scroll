@@ -1,10 +1,7 @@
-import {
-  FlickrImageAuthor,
-  FlickrPhoto,
-} from "../../nature-lovers/src/types/flickrTypes";
-import { Photo } from "../../nature-lovers/src/types/imageTypes";
+import { FlickrImageAuthor, FlickrPhoto } from "../types/flickrTypes";
+import { Photo } from "../types/imageTypes";
 
-const defaultAuthor: FlickrImageAuthor = {
+export const defaultAuthor: FlickrImageAuthor = {
   id: "",
   username: "Unknown",
   realname: "Unknown",
