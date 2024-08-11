@@ -24,7 +24,11 @@ const useFetchData = ({
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = useCallback(async () => {
-    if (!method || !page) return;
+    if (!method || !page) {
+      setIsLoading(false);
+      setError("Method or page is missing");
+      return;
+    }
 
     const URL_PARAMS = new URLSearchParams({
       method,
@@ -50,7 +54,6 @@ const useFetchData = ({
       setError(
         error instanceof Error ? error.message : "An unknown error occurred"
       );
-      throw new Error("An error occurred while fetching data");
     } finally {
       setIsLoading(false);
     }
