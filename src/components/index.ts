@@ -7,3 +7,4 @@ export * from "./Logo/Logo";
 export * from "./Main/Main";
 export * from "./ResponsiveImage/ResponsiveImage";
 export * from "./Tabs/Tabs";
+export * from "./ScrollToTopBtn/ScrollToTopBtn";

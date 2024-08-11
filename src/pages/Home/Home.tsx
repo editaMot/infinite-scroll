@@ -1,4 +1,4 @@
-import { Main, TabsType } from "@components/index";
+import { Main, ScrollToTopBtn, TabsType } from "@components/index";
 import { FlickrImagesTags } from "@customTypes/flickrTypes";
 import { useState } from "react";
 import {
@@ -42,6 +42,7 @@ const Home: React.FC = () => {
         </>
       )}
       {activeTab === "favourites" && <FavouriteList />}
+      <ScrollToTopBtn />
     </Main>
   );
 };
