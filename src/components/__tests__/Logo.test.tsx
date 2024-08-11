@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Logo from "../Logo/Logo";
+import { Logo } from "../index";
 
 describe("Logo", () => {
   it("renders the logo image with correct attributes", () => {

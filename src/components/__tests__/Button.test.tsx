@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom/vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
-import Button from "../Button/Button";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { Button } from "../index";
 
 describe("Button", () => {
   const text = "Click Me";
