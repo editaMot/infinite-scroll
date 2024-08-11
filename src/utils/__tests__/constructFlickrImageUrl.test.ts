@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { FlickrImageSize, IMAGE_URL } from "../../constants/constants";
-import { FlickrPhoto } from "../../types/flickrTypes";
+import { IMAGE_URL } from "@constants/constants";
+import { FlickrImageSize, FlickrPhoto } from "@customTypes/flickrTypes";
 import { constructFlickrImageUrl } from "../constructFlikrImageUrl";
 
 const testPhoto: FlickrPhoto = {

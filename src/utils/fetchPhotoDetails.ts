@@ -1,5 +1,5 @@
-import { ENDPOINT_URL } from "../constants/constants";
-import { FlickrApiMethods, FlickrImageAuthor } from "../types/flickrTypes";
+import { ENDPOINT_URL } from "@constants/constants";
+import { FlickrApiMethods, FlickrImageAuthor } from "@customTypes/flickrTypes";
 
 export const detailsCache = new Map<string, FlickrImageAuthor>();
 

@@ -1,7 +1,6 @@
-import noPhoto from "../assets/no-photo.png";
-import { FlickrImageSize } from "../constants/constants";
-import { FlickrPhoto } from "../types/flickrTypes";
-import { ImageUrls } from "../types/imageTypes";
+import noPhoto from "@assets/no-photo.png";
+import { FlickrImageSize, FlickrPhoto } from "@customTypes/flickrTypes";
+import { ImageUrls } from "@customTypes/imageTypes";
 import { constructFlickrImageUrl } from "./constructFlikrImageUrl";
 import { isValidFlickrImageUrl } from "./flickrImageUrlValidation";
 

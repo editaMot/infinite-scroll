@@ -1,8 +1,8 @@
+import { Error, ImageCard, Loader } from "@components/index";
+import useIntersectionObserver from "@hooks/useIntersectionObserver";
+import usePhotos from "@hooks/usePhotos";
 import { useCallback } from "react";
-import { Error, ImageCard, Loader } from "../../../../components/index";
-import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
-import usePhotos from "../../../../hooks/usePhotos";
-import { FlickrImagesTags } from "../../../../types/flickrTypes";
+import { FlickrImagesTags } from "@customTypes/flickrTypes";
 import styles from "./ImagesList.module.scss";
 
 interface ImagesListProps {

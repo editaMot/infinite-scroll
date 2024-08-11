@@ -1,10 +1,10 @@
-import { renderHook, waitFor } from "@testing-library/react";
-import { ENDPOINT_URL } from "../../constants/constants";
+import { ENDPOINT_URL } from "@constants/constants";
 import {
   FlickrApiMethods,
   FlickrImagesTags,
   ItemsPerPage,
-} from "../../types/flickrTypes";
+} from "@customTypes/flickrTypes";
+import { renderHook, waitFor } from "@testing-library/react";
 import useFetchData from "../useFetchData";
 
 vi.stubEnv("VITE_APP_API_KEY", "fake-api-key");

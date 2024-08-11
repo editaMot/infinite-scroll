@@ -1,5 +1,5 @@
-import { FlickrImageAuthor, FlickrPhoto } from "../types/flickrTypes";
-import { Photo } from "../types/imageTypes";
+import { FlickrImageAuthor, FlickrPhoto } from "@customTypes/flickrTypes";
+import { Photo } from "@customTypes/imageTypes";
 
 export const defaultAuthor: FlickrImageAuthor = {
   id: "",

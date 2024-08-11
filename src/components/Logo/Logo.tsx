@@ -1,4 +1,4 @@
-import logo from "../../assets/logo.svg";
+import logo from "@assets/logo.svg";
 import styles from "./Logo.module.scss";
 
 export const Logo: React.FC = () => (

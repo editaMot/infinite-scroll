@@ -1,5 +1,5 @@
-import { FlickrImageSize, IMAGE_URL } from "../constants/constants";
-import { FlickrPhoto } from "../types/flickrTypes";
+import { IMAGE_URL } from "@constants/constants";
+import { FlickrImageSize, FlickrPhoto } from "@customTypes/flickrTypes";
 
 export const constructFlickrImageUrl = (
   photo: FlickrPhoto,

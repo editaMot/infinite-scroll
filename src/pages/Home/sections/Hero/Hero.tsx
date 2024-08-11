@@ -1,4 +1,4 @@
-import { Logo, Tabs, TabsType } from "../../../../components/index";
+import { Logo, Tabs, TabsType } from "@components/index";
 import styles from "./Hero.module.scss";
 
 interface HeroProps {

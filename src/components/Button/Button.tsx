@@ -5,10 +5,8 @@ interface ButtonProps {
   action: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ text, action }) => {
-  return (
-    <button onClick={action} className={styles.btn}>
-      {text}
-    </button>
-  );
-};
+export const Button: React.FC<ButtonProps> = ({ text, action }) => (
+  <button onClick={action} className={styles.btn}>
+    {text}
+  </button>
+);

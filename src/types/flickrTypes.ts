@@ -5,9 +5,15 @@ export enum FlickrApiMethods {
 
 export enum FlickrImagesTags {
   Mountain = "mountain",
-  Forrest = "forrest",
+  Forest = "forest",
   Sunset = "sunset",
   Beach = "beach",
+}
+
+export enum FlickrImageSize {
+  SMALL = "_s.jpg",
+  MEDIUM = ".jpg",
+  LARGE = "_b.jpg",
 }
 
 export interface FetchFlickrDataParams {

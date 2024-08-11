@@ -1,8 +1,8 @@
+import { favouriteImagesContext } from "@contexts/favouriteImagesContext";
+import { Photo } from "@customTypes/imageTypes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react";
-import { favouriteImagesContext } from "../../contexts/favouriteImagesContext";
-import { Photo } from "../../types/imageTypes";
 import { useFavouriteImage } from "../useFavouriteImage";
 
 const photo: Photo = {

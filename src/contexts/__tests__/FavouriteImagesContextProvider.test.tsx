@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useContext } from "react";
-import { Photo } from "../../types/imageTypes";
+import { Photo } from "@customTypes/imageTypes";
 import { favouriteImagesContext } from "../favouriteImagesContext";
 import { FavouriteImagesContextProvider } from "../favouriteImagesContextProvider";
 

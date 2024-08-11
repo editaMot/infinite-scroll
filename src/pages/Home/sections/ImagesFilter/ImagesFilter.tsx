@@ -1,4 +1,4 @@
-import { FlickrImagesTags } from "../../../../types/flickrTypes";
+import { FlickrImagesTags } from "@customTypes/flickrTypes";
 import styles from "./ImagesFilter.module.scss";
 
 interface FilterTag {
@@ -16,8 +16,8 @@ const FILTER_TAGS: FilterTag[] = [
     tag: FlickrImagesTags.Beach,
   },
   {
-    title: "Forrests",
-    tag: FlickrImagesTags.Forrest,
+    title: "Forests",
+    tag: FlickrImagesTags.Forest,
   },
   {
     title: "Sunsets",
@@ -34,6 +34,16 @@ export const ImagesFilter: React.FC<ImagesFilterProps> = ({
   onFilterClick,
   activeFilter,
 }) => {
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    tag: FlickrImagesTags
+  ) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onFilterClick(tag);
+    }
+  };
+
   return (
     <div className={styles.filter}>
       {FILTER_TAGS.map(({ title, tag }) => (
@@ -43,6 +53,9 @@ export const ImagesFilter: React.FC<ImagesFilterProps> = ({
           }`}
           key={tag}
           onClick={() => onFilterClick(tag)}
+          onKeyDown={(e) => handleKeyDown(e, tag)}
+          tabIndex={0}
+          role="button"
         >
           <p>{title}</p>
         </div>

@@ -1,14 +1,15 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { DEBOUNCE_DELAY } from "@constants/constants";
 import {
   FlickrApiMethods,
   FlickrImageAuthor,
   FlickrImagesTags,
   FlickrPhoto,
-} from "../types/flickrTypes";
-import { Photo } from "../types/imageTypes";
-import { constructPhotoObject } from "../utils/constructPhotoObject";
-import { debounce } from "../utils/debounce";
-import { fetchPhotoDetails } from "../utils/fetchPhotoDetails";
+} from "@customTypes/flickrTypes";
+import { Photo } from "@customTypes/imageTypes";
+import { constructPhotoObject } from "@utils/constructPhotoObject";
+import { debounce } from "@utils/debounce";
+import { fetchPhotoDetails } from "@utils/fetchPhotoDetails";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import useFetchData from "./useFetchData";
 
 interface UsePhotosReturn {
@@ -17,8 +18,6 @@ interface UsePhotosReturn {
   error: string | null;
   loadMore: () => void;
 }
-
-const DEBOUNCE_DELAY = 200;
 
 const usePhotos = (activeFilter: FlickrImagesTags): UsePhotosReturn => {
   const [details, setDetails] = useState<FlickrImageAuthor[]>([]);
