@@ -10,7 +10,10 @@ import {
 
 const Home: React.FC = () => {
   const INITIAL_FILTER_TAG = FlickrImagesTags.Mountain;
-  const [activeTab, setActiveTab] = useState<TabsType>("all");
+  const [activeTab, setActiveTab] = useState<TabsType>(() => {
+    const savedTab = localStorage.getItem("activeTab");
+    return savedTab ? (JSON.parse(savedTab) as TabsType) : "all";
+  });
   const [activeFilter, setActiveFilter] = useState<FlickrImagesTags>(() => {
     const savedFilter = localStorage.getItem("activeFilter");
     return savedFilter
@@ -27,6 +30,7 @@ const Home: React.FC = () => {
 
   const handleTabClick = (tabName: TabsType) => {
     setActiveTab(tabName);
+    localStorage.setItem("activeTab", JSON.stringify(tabName));
   };
 
   return (

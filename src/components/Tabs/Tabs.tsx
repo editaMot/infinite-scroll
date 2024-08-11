@@ -1,6 +1,11 @@
 import styles from "./Tabs.module.scss";
 
-export type TabsType = "all" | "favourites";
+const TAB_NAMES = {
+  all: "All Photos",
+  favourites: "Favourites Photos",
+};
+
+export type TabsType = keyof typeof TAB_NAMES;
 
 interface TabsProps {
   activeTab: TabsType;
@@ -20,28 +25,23 @@ export const Tabs: React.FC<TabsProps> = ({ activeTab, handleActiveTab }) => {
 
   return (
     <div className={styles.tabs}>
-      <div
-        className={`${styles.tabs_tab} ${
-          activeTab === "all" ? styles.active : ""
-        }`}
-        onClick={() => handleActiveTab("all")}
-        onKeyDown={(e) => handleKeyDown(e, "all")}
-        tabIndex={0}
-        role="button"
-      >
-        All Photos
-      </div>
-      <div
-        className={`${styles.tabs_tab} ${
-          activeTab === "favourites" ? styles.active : ""
-        }`}
-        onClick={() => handleActiveTab("favourites")}
-        onKeyDown={(e) => handleKeyDown(e, "favourites")}
-        tabIndex={0}
-        role="button"
-      >
-        Favourites Photos
-      </div>
+      {Object.keys(TAB_NAMES).map((tabKey) => {
+        const tab = tabKey as TabsType;
+        return (
+          <div
+            key={tab}
+            className={`${styles.tabs_tab} ${
+              activeTab === tab ? styles.active : ""
+            }`}
+            onClick={() => handleActiveTab(tab)}
+            onKeyDown={(e) => handleKeyDown(e, tab)}
+            tabIndex={0}
+            role="button"
+          >
+            {TAB_NAMES[tab]}
+          </div>
+        );
+      })}
       <div className={styles.tabs_indicator} />
     </div>
   );
