@@ -9,14 +9,19 @@ import {
 } from "./sections/index";
 
 const Home: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<TabsType>("all");
   const INITIAL_FILTER_TAG = FlickrImagesTags.Mountain;
-  const [activeFilter, setActiveFilter] =
-    useState<FlickrImagesTags>(INITIAL_FILTER_TAG);
+  const [activeTab, setActiveTab] = useState<TabsType>("all");
+  const [activeFilter, setActiveFilter] = useState<FlickrImagesTags>(() => {
+    const savedFilter = localStorage.getItem("activeFilter");
+    return savedFilter
+      ? (JSON.parse(savedFilter) as FlickrImagesTags)
+      : INITIAL_FILTER_TAG;
+  });
 
   const handleFilterClick = (tag: FlickrImagesTags): void => {
     if (activeFilter !== tag) {
       setActiveFilter(tag);
+      localStorage.setItem("activeFilter", JSON.stringify(tag));
     }
   };
 
