@@ -1,10 +1,9 @@
 import { useContext } from "react";
-import ImageCard from "../../../../components/ImageCard/ImageCard";
+import { ImageCard, Error } from "../../../../components/index";
 import { favouriteImagesContext } from "../../../../contexts/favouriteImagesContext";
 import styles from "./FavouriteList.module.scss";
-import Error from "../../../../components/Error/Error";
 
-const FavouriteList: React.FC = () => {
+export const FavouriteList: React.FC = () => {
   const { favouriteImagesList } = useContext(favouriteImagesContext);
 
   if (favouriteImagesList.length === 0)
@@ -18,5 +17,3 @@ const FavouriteList: React.FC = () => {
     </div>
   );
 };
-
-export default FavouriteList;

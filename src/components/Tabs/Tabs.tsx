@@ -7,7 +7,7 @@ interface TabsProps {
   handleActiveTab: (tab: TabsType) => void;
 }
 
-const Tabs: React.FC<TabsProps> = ({ activeTab, handleActiveTab }) => {
+export const Tabs: React.FC<TabsProps> = ({ activeTab, handleActiveTab }) => {
   return (
     <div className={styles.tabs}>
       <div
@@ -30,5 +30,3 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, handleActiveTab }) => {
     </div>
   );
 };
-
-export default Tabs;

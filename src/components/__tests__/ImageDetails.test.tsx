@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Photo } from "../../types/imageTypes";
-import ImageDetails from "../ImageDetails/ImageDetails";
+import { ImageDetails } from "../index";
 
 describe("ImageDetails", () => {
   const photo: Photo = {

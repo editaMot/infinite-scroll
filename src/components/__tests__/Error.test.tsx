@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Error from "../Error/Error";
+import { Error } from "../index";
 
 describe("Error", () => {
   it("should render error message when error message is provided", () => {

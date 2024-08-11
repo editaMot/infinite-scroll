@@ -1,7 +1,5 @@
 import { useCallback } from "react";
-import Error from "../../../../components/Error/Error";
-import ImageCard from "../../../../components/ImageCard/ImageCard";
-import Loader from "../../../../components/Loader/Loader";
+import { Error, ImageCard, Loader } from "../../../../components/index";
 import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
 import usePhotos from "../../../../hooks/usePhotos";
 import { FlickrImagesTags } from "../../../../types/flickrTypes";
@@ -11,7 +9,7 @@ interface ImagesListProps {
   activeFilter: FlickrImagesTags;
 }
 
-const ImagesList: React.FC<ImagesListProps> = ({ activeFilter }) => {
+export const ImagesList: React.FC<ImagesListProps> = ({ activeFilter }) => {
   const { photos, isLoading, error, loadMore } = usePhotos(activeFilter);
 
   const handleIntersect = useCallback(
@@ -23,10 +21,7 @@ const ImagesList: React.FC<ImagesListProps> = ({ activeFilter }) => {
     [loadMore]
   );
 
-  const sentinelRef = useIntersectionObserver<HTMLDivElement>(
-    handleIntersect,
-    []
-  );
+  const sentinelRef = useIntersectionObserver<HTMLDivElement>(handleIntersect);
 
   if (isLoading && photos.length === 0)
     return (
@@ -48,5 +43,3 @@ const ImagesList: React.FC<ImagesListProps> = ({ activeFilter }) => {
     </div>
   );
 };
-
-export default ImagesList;

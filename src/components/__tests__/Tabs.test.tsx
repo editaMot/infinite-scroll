@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Tabs from "../Tabs/Tabs";
+import { Tabs } from "../index";
 
 describe("Tabs", () => {
   it("renders all photos and favourite photos tabs", () => {

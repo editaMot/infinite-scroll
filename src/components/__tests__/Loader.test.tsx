@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Loader from "../Loader/Loader";
+import { Loader } from "../index";
 
 vi.mock("../Loader/Loader.module.scss", () => ({
   __esModule: true,

@@ -8,7 +8,7 @@ interface ResponsiveImageProps {
   photo: Photo;
 }
 
-const ResponsiveImage: React.FC<ResponsiveImageProps> = ({ photo }) => {
+export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({ photo }) => {
   const urls = getImageUrls(photo);
 
   const imageUrl = urls?.medium || noPhoto;
@@ -26,5 +26,3 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({ photo }) => {
     />
   );
 };
-
-export default ResponsiveImage;

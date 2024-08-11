@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Main from "../Main/Main";
+import { Main } from "../index";
 
 describe("Main", () => {
   it("renders children correctly", () => {

@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { useFavouriteImage } from "../../hooks/useFavouriteImage";
 import { Photo } from "../../types/imageTypes";
-import ImageDetails from "../ImageDetails/ImageDetails";
-import ResponsiveImage from "../ResponsiveImage/ResponsiveImage";
+import { ImageDetails, ResponsiveImage } from "../index";
 import styles from "./ImageCard.module.scss";
 
 interface ImageCardProps {
   photo: Photo;
 }
 
-const ImageCard: React.FC<ImageCardProps> = ({ photo }) => {
+export const ImageCard: React.FC<ImageCardProps> = ({ photo }) => {
   const { handleFavouriteClick, addedToFavourite } = useFavouriteImage(photo);
   const [showDetails, setShowDetails] = useState<boolean>(false);
 
@@ -34,5 +33,3 @@ const ImageCard: React.FC<ImageCardProps> = ({ photo }) => {
     </div>
   );
 };
-
-export default ImageCard;

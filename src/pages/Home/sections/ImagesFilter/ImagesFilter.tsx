@@ -30,7 +30,7 @@ interface ImagesFilterProps {
   activeFilter: FlickrImagesTags;
 }
 
-const ImagesFilter: React.FC<ImagesFilterProps> = ({
+export const ImagesFilter: React.FC<ImagesFilterProps> = ({
   onFilterClick,
   activeFilter,
 }) => {
@@ -50,5 +50,3 @@ const ImagesFilter: React.FC<ImagesFilterProps> = ({
     </div>
   );
 };
-
-export default ImagesFilter;

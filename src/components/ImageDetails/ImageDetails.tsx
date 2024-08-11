@@ -1,5 +1,5 @@
 import { Photo } from "../../types/imageTypes";
-import Button from "../Button/Button";
+import { Button } from "../index";
 import styles from "./ImageDetails.module.scss";
 
 interface ImageDetailsProps {
@@ -8,7 +8,7 @@ interface ImageDetailsProps {
   onFavouriteClick: (photo: Photo) => void;
 }
 
-const ImageDetails: React.FC<ImageDetailsProps> = ({
+export const ImageDetails: React.FC<ImageDetailsProps> = ({
   photo,
   isInFavourite,
   onFavouriteClick,
@@ -29,5 +29,3 @@ const ImageDetails: React.FC<ImageDetailsProps> = ({
     </div>
   );
 };
-
-export default ImageDetails;

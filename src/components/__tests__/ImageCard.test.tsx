@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Photo } from "../../types/imageTypes";
-import ImageCard from "../ImageCard/ImageCard";
+import { ImageCard } from "../index";
 
 describe("ImageCard", () => {
   const photo: Photo = {

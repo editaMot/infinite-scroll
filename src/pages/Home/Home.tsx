@@ -1,11 +1,13 @@
 import { useState } from "react";
-import Main from "../../components/Main/Main";
+import { Main } from "../../components/index";
 import { TabsType } from "../../components/Tabs/Tabs";
 import { FlickrImagesTags } from "../../types/flickrTypes";
-import FavouriteList from "./sections/FavouriteList/FavouriteList";
-import Hero from "./sections/Hero/Hero";
-import ImagesFilter from "./sections/ImagesFilter/ImagesFilter";
-import ImagesList from "./sections/ImagesList/ImagesList";
+import {
+  FavouriteList,
+  Hero,
+  ImagesFilter,
+  ImagesList,
+} from "./sections/index";
 
 const Home: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabsType>("all");
