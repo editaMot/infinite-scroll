@@ -4,6 +4,6 @@ interface ErrorProps {
   errorMessage: string;
 }
 
-export const Error: React.FC<ErrorProps> = ({ errorMessage }) => {
-  return <div className={styles.error}>{errorMessage}</div>;
-};
+export const Error: React.FC<ErrorProps> = ({ errorMessage }) => (
+  <div className={styles.error}>{errorMessage}</div>
+);

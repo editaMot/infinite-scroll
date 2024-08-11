@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { vi } from "vitest";
-import { RESPONSIVE_SIZES } from "../../constants/responsiveSizes";
-import { ImageUrls, Photo } from "../../types/imageTypes";
+import { RESPONSIVE_SIZES } from "@constants/responsiveSizes";
+import { ImageUrls, Photo } from "@customTypes/imageTypes";
 import { ResponsiveImage } from "../index";
-import { getImageUrls } from "../../utils/getImageUrls";
+import { getImageUrls } from "@utils/getImageUrls";
 
 vi.mock("../../utils/getImageUrls", () => ({
   getImageUrls: vi.fn(),

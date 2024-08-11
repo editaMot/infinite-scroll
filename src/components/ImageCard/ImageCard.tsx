@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useFavouriteImage } from "../../hooks/useFavouriteImage";
-import { Photo } from "../../types/imageTypes";
+import { useFavouriteImage } from "@hooks/useFavouriteImage";
+import { Photo } from "@customTypes/imageTypes";
 import { ImageDetails, ResponsiveImage } from "../index";
 import styles from "./ImageCard.module.scss";
 

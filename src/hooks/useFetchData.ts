@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
-import { ENDPOINT_URL } from "../constants/constants";
+import { ENDPOINT_URL } from "@constants/constants";
 import {
   FetchFlickrDataParams,
   FlickrApiResponse,
   FlickrImagesTags,
   ItemsPerPage,
-} from "../types/flickrTypes";
+} from "@customTypes/flickrTypes";
+import { useCallback, useEffect, useState } from "react";
 
 interface UseFetchDataReturn {
   data: FlickrApiResponse | null;

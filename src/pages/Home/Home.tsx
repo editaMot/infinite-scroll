@@ -1,7 +1,6 @@
+import { Main, TabsType } from "@components/index";
+import { FlickrImagesTags } from "@customTypes/flickrTypes";
 import { useState } from "react";
-import { Main } from "../../components/index";
-import { TabsType } from "../../components/Tabs/Tabs";
-import { FlickrImagesTags } from "../../types/flickrTypes";
 import {
   FavouriteList,
   Hero,

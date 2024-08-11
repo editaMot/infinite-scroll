@@ -1,5 +1,5 @@
-import { ENDPOINT_URL } from "../../constants/constants";
-import { FlickrApiMethods } from "../../types/flickrTypes";
+import { ENDPOINT_URL } from "@constants/constants";
+import { FlickrApiMethods } from "@customTypes/flickrTypes";
 import { detailsCache, fetchPhotoDetails } from "../fetchPhotoDetails";
 
 vi.stubEnv("VITE_APP_API_KEY", "fake-api-key");

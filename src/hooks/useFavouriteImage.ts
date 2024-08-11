@@ -1,6 +1,6 @@
+import { favouriteImagesContext } from "@contexts/favouriteImagesContext";
+import { Photo } from "@customTypes/imageTypes";
 import { useContext, useEffect, useState } from "react";
-import { favouriteImagesContext } from "../contexts/favouriteImagesContext";
-import { Photo } from "../types/imageTypes";
 
 interface UseFavouriteImageResponse {
   addedToFavourite: boolean;

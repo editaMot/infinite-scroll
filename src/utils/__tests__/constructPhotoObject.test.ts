@@ -1,4 +1,4 @@
-import { FlickrImageAuthor, FlickrPhoto } from "../../types/flickrTypes";
+import { FlickrImageAuthor, FlickrPhoto } from "@customTypes/flickrTypes";
 import { constructPhotoObject, defaultAuthor } from "../constructPhotoObject";
 
 describe("constructPhotoObject", () => {

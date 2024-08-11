@@ -1,4 +1,4 @@
-import { FlickrImageSize } from "../../constants/constants";
+import { FlickrImageSize } from "@customTypes/flickrTypes";
 import { isValidFlickrImageUrl } from "../flickrImageUrlValidation";
 
 describe("flickrImageUrlValidation.ts", () => {

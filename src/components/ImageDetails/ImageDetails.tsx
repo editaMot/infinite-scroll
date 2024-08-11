@@ -1,4 +1,4 @@
-import { Photo } from "../../types/imageTypes";
+import { Photo } from "@customTypes/imageTypes";
 import { Button } from "../index";
 import styles from "./ImageDetails.module.scss";
 

@@ -1,5 +1,5 @@
+import { Photo } from "@customTypes/imageTypes";
 import { ReactNode, useCallback, useEffect, useState } from "react";
-import { Photo } from "../types/imageTypes";
 import { favouriteImagesContext } from "./favouriteImagesContext";
 
 interface Props {
@@ -26,6 +26,9 @@ export const FavouriteImagesContextProvider: React.FC<Props> = ({
         setFavouriteImagesList(parsedFavourites);
       } catch (error) {
         localStorage.removeItem(LocalStorageKey.favouriteImages);
+        throw new Error(
+          error instanceof Error ? error.message : "An unknown error occurred"
+        );
       }
     }
     setInitialized(true);

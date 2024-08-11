@@ -1,5 +1,5 @@
 import React from "react";
-import { Photo } from "../types/imageTypes";
+import { Photo } from "@customTypes/imageTypes";
 
 export interface FavouriteImagesContext {
   favouriteImagesList: Photo[];

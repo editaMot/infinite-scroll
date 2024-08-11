@@ -1,6 +1,6 @@
+import { Error, ImageCard } from "@components/index";
+import { favouriteImagesContext } from "@contexts/favouriteImagesContext";
 import { useContext } from "react";
-import { ImageCard, Error } from "../../../../components/index";
-import { favouriteImagesContext } from "../../../../contexts/favouriteImagesContext";
 import styles from "./FavouriteList.module.scss";
 
 export const FavouriteList: React.FC = () => {

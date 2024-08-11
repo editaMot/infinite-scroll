@@ -1,4 +1,4 @@
-import { FlickrImageSize } from "../constants/constants";
+import { FlickrImageSize } from "@customTypes/flickrTypes";
 
 export const isValidFlickrImageUrl = (
   url: string,
