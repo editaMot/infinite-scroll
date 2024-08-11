@@ -30,6 +30,11 @@ export const ImageCard: React.FC<ImageCardProps> = ({ photo }) => {
         />
       )}
       <ResponsiveImage photo={photo} />
+      {addedToFavourite && (
+        <span className={styles.favourited}>
+          <span className={styles.favourited__content}>❤</span>
+        </span>
+      )}
     </div>
   );
 };
