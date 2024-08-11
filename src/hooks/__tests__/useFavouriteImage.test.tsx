@@ -4,18 +4,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react";
 import { useFavouriteImage } from "../useFavouriteImage";
-
-const photo: Photo = {
-  id: "1",
-  title: "Sample Image",
-  secret: "acfd415fa7",
-  server: "7372",
-  author: {
-    id: "1",
-    realname: "Real Name",
-    username: "realname123",
-  },
-};
+import { testPhoto } from "@utils/testData";
 
 const mockUpdateFavouritesList = vi.fn();
 const mockRemoveFromFavouritesList = vi.fn();
@@ -27,7 +16,7 @@ const initialContextValue = {
 };
 
 const updatedContextValue = {
-  favouriteImagesList: [photo],
+  favouriteImagesList: [testPhoto],
   updateFavouritesList: mockUpdateFavouritesList,
   removeFromFavouritesList: mockRemoveFromFavouritesList,
 };
@@ -50,7 +39,7 @@ describe("useFavouriteImage", () => {
   it("should initialize with the correct state based on context", () => {
     render(
       <favouriteImagesContext.Provider value={initialContextValue}>
-        <TestComponent photo={photo} />
+        <TestComponent photo={testPhoto} />
       </favouriteImagesContext.Provider>
     );
 
@@ -60,7 +49,7 @@ describe("useFavouriteImage", () => {
   it("should update state when context value changes", async () => {
     const { rerender } = render(
       <favouriteImagesContext.Provider value={initialContextValue}>
-        <TestComponent photo={photo} />
+        <TestComponent photo={testPhoto} />
       </favouriteImagesContext.Provider>
     );
 
@@ -70,7 +59,7 @@ describe("useFavouriteImage", () => {
 
     rerender(
       <favouriteImagesContext.Provider value={updatedContextValue}>
-        <TestComponent photo={photo} />
+        <TestComponent photo={testPhoto} />
       </favouriteImagesContext.Provider>
     );
 
@@ -80,7 +69,7 @@ describe("useFavouriteImage", () => {
   it("should call the correct context functions when clicking the button", async () => {
     render(
       <favouriteImagesContext.Provider value={initialContextValue}>
-        <TestComponent photo={photo} />
+        <TestComponent photo={testPhoto} />
       </favouriteImagesContext.Provider>
     );
 
@@ -88,12 +77,12 @@ describe("useFavouriteImage", () => {
       await userEvent.click(screen.getByText("Add to Favourites"));
     });
 
-    expect(mockUpdateFavouritesList).toHaveBeenCalledWith(photo);
+    expect(mockUpdateFavouritesList).toHaveBeenCalledWith(testPhoto);
 
     await act(async () => {
       await userEvent.click(screen.getByText("Remove from Favourites"));
     });
 
-    expect(mockRemoveFromFavouritesList).toHaveBeenCalledWith(photo);
+    expect(mockRemoveFromFavouritesList).toHaveBeenCalledWith(testPhoto);
   });
 });

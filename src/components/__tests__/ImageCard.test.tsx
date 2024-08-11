@@ -1,27 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Photo } from "@customTypes/imageTypes";
 import { ImageCard } from "../index";
+import { testPhoto } from "@utils/testData";
 
 describe("ImageCard", () => {
-  const photo: Photo = {
-    id: "1",
-    title: "Sample Image",
-    secret: "acfd415fa7",
-    server: "7372",
-    author: {
-      id: "1",
-      realname: "Real Name",
-      username: "realname123",
-    },
-  };
-
   it("should render ImageCard and show details on hover", async () => {
-    render(<ImageCard photo={photo} />);
+    render(<ImageCard photo={testPhoto} />);
 
     const image = screen.getByRole("img");
 
-    const imageDetailsText = photo.title;
+    const imageDetailsText = testPhoto.title;
 
     expect(screen.queryByText(imageDetailsText)).not.toBeInTheDocument();
 

@@ -1,21 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { testPhoto } from "@utils/testData";
 import { useContext } from "react";
-import { Photo } from "@customTypes/imageTypes";
 import { favouriteImagesContext } from "../favouriteImagesContext";
 import { FavouriteImagesContextProvider } from "../favouriteImagesContextProvider";
-
-const photo: Photo = {
-  id: "1",
-  title: "Sample Image",
-  secret: "acfd415fa7",
-  server: "7372",
-  author: {
-    id: "1",
-    realname: "Real Name",
-    username: "realname123",
-  },
-};
 
 const TestComponent: React.FC = () => {
   const context = useContext(favouriteImagesContext);
@@ -25,10 +13,10 @@ const TestComponent: React.FC = () => {
 
   return (
     <div>
-      <button onClick={() => context.updateFavouritesList(photo)}>
+      <button onClick={() => context.updateFavouritesList(testPhoto)}>
         Add Photo
       </button>
-      <button onClick={() => context.removeFromFavouritesList(photo)}>
+      <button onClick={() => context.removeFromFavouritesList(testPhoto)}>
         Remove Photo
       </button>
       <div data-testid="favourites-list">
@@ -54,14 +42,16 @@ describe("FavouriteImagesContextProvider", () => {
 
     await userEvent.click(screen.getByText("Add Photo"));
     expect(screen.getByTestId("favourites-list")).toHaveTextContent(
-      photo.title
+      testPhoto.title
     );
     expect(screen.getByTestId("favourites-list")).toHaveTextContent(
-      photo.author.realname
+      testPhoto.author.realname
     );
 
     await userEvent.click(screen.getByText("Remove Photo"));
-    expect(screen.queryByText(photo.title)).not.toBeInTheDocument();
-    expect(screen.queryByText(photo.author.realname)).not.toBeInTheDocument();
+    expect(screen.queryByText(testPhoto.title)).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(testPhoto.author.realname)
+    ).not.toBeInTheDocument();
   });
 });
