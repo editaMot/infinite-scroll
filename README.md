@@ -6,7 +6,7 @@ Welcome to Nature Lovers – a web application designed to showcase an infinite 
 
 1. Infinite Scrolling: Users can continuously scroll through nature photos without needing to manually load more content. As the user scrolls down the page, new images automatically load and display, providing a seamless browsing experience.
 2. Filter Photos by Categories: Users can filter the displayed photos based on specific categories such as Mountains, Forests, Beaches, and Sunsets. By selecting a category, the gallery updates to show only images that match the chosen filter.
-3. Favourite/Unfavourite Photos: Users can mark photos as favorites by clicking a "Favourite" button. This action adds the photo to their list of favorites, making it easy to revisit later. Users can also remove photos from their favorites list by clicking "Unfovourite" button.
+3. Favourite/Unfavourite Photos: Users can mark photos as favorites by clicking a "Favourite" button. This action adds the photo to their list of favorites, making it easy to revisit later. Users can also remove photos from their favorites list by clicking "Unfavourite" button.
 4. View Favourite Photos: Users can access a dedicated section to view all their favorited photos in one place. This feature provides a convenient way to browse through and manage all the photos they have marked as favorites, allowing for quick access to their preferred images.
 
 ## Technology Stack:
@@ -90,3 +90,12 @@ npm run test:ui
 ```
 
 This will start the Vitest UI, allowing you to see real-time updates and details about your test runs, making it easier to debug and analyze test results.
+
+## Additional Resources
+
+- [Flickr API Documentation](https://www.flickr.com/services/api/)
+- [Vite.js Documentation](https://vitejs.dev/guide/)
+- [React Documentation](https://reactjs.org/docs/getting-started.html)
+- [Vitest Documentation](https://vitest.dev/)
+- [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro)
+- [Jest DOM Documentation](https://github.com/testing-library/jest-dom)
