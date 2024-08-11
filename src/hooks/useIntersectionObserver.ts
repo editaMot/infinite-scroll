@@ -1,8 +1,7 @@
 import { useCallback, useRef } from "react";
 
 const useIntersectionObserver = <T extends HTMLElement>(
-  callback: (entries: IntersectionObserverEntry[]) => void,
-  deps: React.DependencyList
+  callback: (entries: IntersectionObserverEntry[]) => void
 ) => {
   const observer = useRef<IntersectionObserver | null>(null);
 
