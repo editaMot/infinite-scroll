@@ -1,0 +1,28 @@
+.scrollToTopButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--text-light);
+  color: var(--color-primary);
+  font-size: 2rem;
+  border: none;
+  box-shadow: var(--box-shadow);
+  border-radius: 50%;
+  width: 4.5rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+
+  @include respond(big-desktop) {
+    right: 20%;
+  }
+}
+
+.scrollToTopButton.visible {
+  opacity: 1;
+}
