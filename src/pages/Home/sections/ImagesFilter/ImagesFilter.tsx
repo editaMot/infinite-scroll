@@ -37,7 +37,7 @@ export const ImagesFilter: React.FC<ImagesFilterProps> = ({
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLDivElement>,
     tag: FlickrImagesTags
-  ) => {
+  ): void => {
     if (e.key === "Enter") {
       e.preventDefault();
       onFilterClick(tag);

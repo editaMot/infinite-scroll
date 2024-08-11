@@ -1,33 +1,21 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Photo } from "@customTypes/imageTypes";
+import { testPhoto } from "@utils/testData";
 import { ImageDetails } from "../index";
 
 describe("ImageDetails", () => {
-  const photo: Photo = {
-    id: "1",
-    title: "Sample Image",
-    secret: "acfd415fa7",
-    server: "7372",
-    author: {
-      id: "1",
-      realname: "Real Name",
-      username: "realname123",
-    },
-  };
-
   it("should render photo details when photo details is provided", () => {
     render(
       <ImageDetails
-        photo={photo}
+        photo={testPhoto}
         isInFavourite={false}
         onFavouriteClick={() => {}}
       />
     );
 
-    expect(screen.getByText(photo.title)).toBeInTheDocument();
+    expect(screen.getByText(testPhoto.title)).toBeInTheDocument();
     expect(
-      screen.getByText(photo.author.realname || photo.author.username)
+      screen.getByText(testPhoto.author.realname || testPhoto.author.username)
     ).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: "Favourite" })
@@ -37,7 +25,7 @@ describe("ImageDetails", () => {
   it("should render 'Unfavourite' button text when isInFavourite is true", () => {
     render(
       <ImageDetails
-        photo={photo}
+        photo={testPhoto}
         isInFavourite={true}
         onFavouriteClick={() => {}}
       />
@@ -52,7 +40,7 @@ describe("ImageDetails", () => {
     const mockOnFavouriteClick = vi.fn();
     render(
       <ImageDetails
-        photo={photo}
+        photo={testPhoto}
         isInFavourite={false}
         onFavouriteClick={mockOnFavouriteClick}
       />
@@ -60,6 +48,6 @@ describe("ImageDetails", () => {
     const user = userEvent.setup();
     await user.click(screen.getByRole("button", { name: "Favourite" }));
 
-    expect(mockOnFavouriteClick).toHaveBeenCalledWith(photo);
+    expect(mockOnFavouriteClick).toHaveBeenCalledWith(testPhoto);
   });
 });

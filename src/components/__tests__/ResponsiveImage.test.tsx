@@ -1,9 +1,10 @@
-import { render, screen } from "@testing-library/react";
-import { vi } from "vitest";
 import { RESPONSIVE_SIZES } from "@constants/responsiveSizes";
-import { ImageUrls, Photo } from "@customTypes/imageTypes";
-import { ResponsiveImage } from "../index";
+import { ImageUrls } from "@customTypes/imageTypes";
+import { render, screen } from "@testing-library/react";
 import { getImageUrls } from "@utils/getImageUrls";
+import { testPhoto } from "@utils/testData";
+import { vi } from "vitest";
+import { ResponsiveImage } from "../index";
 
 vi.mock("../../utils/getImageUrls", () => ({
   getImageUrls: vi.fn(),
@@ -17,18 +18,6 @@ const mockUrls: ImageUrls = {
   large: "http://example.com/large.jpg",
 };
 
-const photo: Photo = {
-  id: "1",
-  title: "Sample Image",
-  secret: "acfd415fa7",
-  server: "7372",
-  author: {
-    id: "1",
-    realname: "Real Name",
-    username: "realname123",
-  },
-};
-
 describe("ResponsiveImage", () => {
   beforeEach(() => {
     vi.resetModules();
@@ -38,7 +27,7 @@ describe("ResponsiveImage", () => {
   it("should render an image with correct attributes", () => {
     mockGetImageUrls.mockReturnValue(mockUrls);
 
-    render(<ResponsiveImage photo={photo} />);
+    render(<ResponsiveImage photo={testPhoto} />);
 
     const image = screen.getByRole("img");
 
@@ -49,12 +38,12 @@ describe("ResponsiveImage", () => {
     );
     expect(image).toHaveAttribute("sizes", RESPONSIVE_SIZES);
     expect(image).toHaveAttribute("loading", "lazy");
-    expect(image).toHaveAttribute("alt", photo.title || "Unknown");
+    expect(image).toHaveAttribute("alt", testPhoto.title || "Unknown");
   });
 
   it("should call getImageUrls with the correct photo", () => {
-    render(<ResponsiveImage photo={photo} />);
+    render(<ResponsiveImage photo={testPhoto} />);
 
-    expect(mockGetImageUrls).toHaveBeenCalledWith(photo);
+    expect(mockGetImageUrls).toHaveBeenCalledWith(testPhoto);
   });
 });

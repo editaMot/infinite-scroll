@@ -28,7 +28,7 @@ const Home: React.FC = () => {
     }
   };
 
-  const handleTabClick = (tabName: TabsType) => {
+  const handleTabClick = (tabName: TabsType): void => {
     setActiveTab(tabName);
     localStorage.setItem("activeTab", JSON.stringify(tabName));
   };
