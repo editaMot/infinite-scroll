@@ -16,11 +16,24 @@ export const ImageCard: React.FC<ImageCardProps> = ({ photo }) => {
 
   const handleHideDetails = (): void => setShowDetails(false);
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (!showDetails) {
+        handleShowDetails();
+      } else {
+        handleHideDetails();
+      }
+    }
+  };
+
   return (
     <div
       className={styles.card}
       onMouseMove={handleShowDetails}
       onMouseLeave={handleHideDetails}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
     >
       {showDetails && (
         <ImageDetails
