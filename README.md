@@ -25,7 +25,7 @@ To get up and running with the Nature Lovers project, follow these steps:
 Begin by cloning the project repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/nature-lovers.git
+git clone https://github.com/editaMot/nature-lovers.git
 ```
 
 ### Install Dependencies
